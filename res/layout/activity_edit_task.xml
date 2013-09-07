@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <EditText
+        android:id="@+id/task_name"
+        android:hint="Build my first Android app :)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
+    
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+	        android:id="@+id/cancel_task_btn"
+	        android:text="Cancel"
+			android:layout_width="0dip"
+			android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:onClick="cancelAddTask" />
+        
+         <Button
+         	style="?android:attr/buttonBarButtonStyle"
+	        android:id="@+id/edit_task_btn"
+	        android:text="Add"
+	        android:layout_width="0dip"
+			android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:onClick="addTask" />
+        
+    </LinearLayout>
+
+</LinearLayout>
