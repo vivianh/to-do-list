@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class EditTaskActivity extends Activity {
 	
-	private static final String EXTRA_TASK = "com.vivian.todo.extras.EXTRA_TASK";
+	public static final String EXTRA_TASK = "com.vivian.todo.extras.EXTRA_TASK";
 	private EditText mTaskName;
 	
 	@Override

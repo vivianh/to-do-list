@@ -1,21 +1,18 @@
 package com.vivian.todo;
 
-import java.util.ArrayList;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class Database extends SQLiteOpenHelper{
 
 	private static Database mInstance;
 	
 	private static final String TABLE_NAME = "tasks";
-	private static final String COLUMN_ID = "id";
-	private static final String COLUMN_TASK = "task_name";
+	protected static final String COLUMN_ID = "_id";
+	protected static final String COLUMN_TASK = "task_name";
 	
 	private static final String CREATE_TABLE = "CREATE TABLE " 
 								+ TABLE_NAME + " (" + COLUMN_ID 
@@ -63,22 +60,10 @@ public class Database extends SQLiteOpenHelper{
 		db.close();
 	}
 	
-	//public ArrayList<String> getAllTasks() {
-		// ArrayList<String> allTasks = new ArrayList<String>();
-	public ArrayList<Task> getAllTasks() {
-		ArrayList<Task> allTasks = new ArrayList<Task>();
-		String selectQuery = "SELECT * FROM " + TABLE_NAME;
+	public Cursor getCursor() {
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_ID;
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(selectQuery, null);
-		if (cursor.moveToFirst()) {
-			do {
-				// allTasks.add(cursor.getString(1));
-				Task task = new Task(cursor.getInt(0), cursor.getString(1));
-				allTasks.add(task);
-			} while (cursor.moveToNext());
-		}
-		db.close();
-		return allTasks;
+		return db.rawQuery(selectQuery, null);
 	}
 
 }
